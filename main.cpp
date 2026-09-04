@@ -44,10 +44,33 @@ struct Color
 };
 
 vector<Color> savedColors;
+const int minVecCount = 25;
+const int maxVecCount = 50;
+
+int genRandNum(int min, int max);
+void populateVec(vector<Color>& savedColors, int amunt, int minSize, int maxSize);
 
 int main()
 {
+    // Seed rng
+    srand(time(0));
+
+
     savedColors.push_back(Color(256, -1, 255));
     cout << savedColors[0].r << " " << savedColors[0].g << " " << savedColors[0].b << endl;
     return 0;
+}
+
+int genRandNum(int min, int max)
+{
+    return rand() % (max - min + 1) + min;
+}
+
+void populateVec(vector<Color>& savedColors, int amount, int minSize, int maxSize)
+{
+    for(int i = 0; i < amount; i++)
+    {
+        Color tempCol = Color(genRandNum(minSize, maxSize), genRandNum(minSize, maxSize), genRandNum(minSize, maxSize));
+        savedColors.push_back(tempCol);
+    }
 }
