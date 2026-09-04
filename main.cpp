@@ -44,33 +44,43 @@ struct Color
 };
 
 vector<Color> savedColors;
-const int minVecCount = 25;
-const int maxVecCount = 50;
+const int MinVecCount = 25;
+const int MaxVecCount = 50;
+const int MinColSize = 0;
+const int MaxColSize = 255;
 
-int genRandNum(int min, int max);
-void populateVec(vector<Color>& savedColors, int amunt, int minSize, int maxSize);
+// Returns a random number between min and max
+int getRandNum(int min, int max);
+
+// Populates a vector<Color> int amount of objects, with 3 random numbers between int minSize and int maxSize
+void populateVec(vector<Color>& savedColors, int amount, int minSize, int maxSize);
 
 int main()
 {
     // Seed rng
     srand(time(0));
+    int colAmount = getRandNum(MinVecCount, MaxVecCount);
 
-
-    savedColors.push_back(Color(256, -1, 255));
-    cout << savedColors[0].r << " " << savedColors[0].g << " " << savedColors[0].b << endl;
+    populateVec(savedColors, colAmount, MinColSize, MaxColSize);
+    for(int i = 0; i < colAmount; i++)
+    {
+        cout << i << " " << savedColors[i].r << " " << savedColors[i].g << " " << savedColors[i].b << endl;
+    }
     return 0;
 }
 
-int genRandNum(int min, int max)
+// Returns a random number between min and max
+int getRandNum(int min, int max)
 {
     return rand() % (max - min + 1) + min;
 }
 
+// Populates a vector<Color> int amount of objects, with 3 random numbers between int minSize and int maxSize
 void populateVec(vector<Color>& savedColors, int amount, int minSize, int maxSize)
 {
     for(int i = 0; i < amount; i++)
     {
-        Color tempCol = Color(genRandNum(minSize, maxSize), genRandNum(minSize, maxSize), genRandNum(minSize, maxSize));
+        Color tempCol = Color(getRandNum(minSize, maxSize), getRandNum(minSize, maxSize), getRandNum(minSize, maxSize));
         savedColors.push_back(tempCol);
     }
 }
