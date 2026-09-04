@@ -1,11 +1,12 @@
 
 // COMSC-210 | Lab 3 | Jonvianney Maglasang
-// Started on September 1, 2026 at 7:44
-// Completed on Spetember 1, 2026 at 9:53
+// Started on September 3, 2026 at 9:30
+// Completed on Spetember 3, 2026 at
 
 #include <iostream>
 #include <random>
 #include <ctime>
+#include <vector>
 
 using namespace std;
 
@@ -42,9 +43,11 @@ struct Color
     }
 };
 
+vector<Color> savedColors;
+
 int main()
 {
-    Color purple = Color(256, -1, 255);
-    cout << purple.r << " " << purple.g << " " << purple.b << endl;
+    savedColors.push_back(Color(256, -1, 255));
+    cout << savedColors[0].r << " " << savedColors[0].g << " " << savedColors[0].b << endl;
     return 0;
 }
