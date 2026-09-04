@@ -1,7 +1,7 @@
 
 // COMSC-210 | Lab 3 | Jonvianney Maglasang
-// Started on September 3, 2026 at 9:30
-// Completed on Spetember 3, 2026 at
+// Started on September 3, 2026 at 9:30 PM
+// Completed on Spetember 3, 2026 at 10:39 PM
 
 #include <iostream>
 #include <iomanip>
@@ -56,7 +56,7 @@ int getRandNum(int min, int max);
 // Populates a vector<Color> int amount of objects, with 3 random numbers between int minSize and int maxSize
 void populateVec(vector<Color>& savedColors, int amount, int minSize, int maxSize);
 
-// Prints out a vector<Color>'s data in a formatted way
+// Prints out a vector<Color>'s data in a formatted way using setw()
 void outputVecData(vector<Color>& savedColors);
 
 int main()
@@ -86,14 +86,15 @@ void populateVec(vector<Color>& savedColors, int amount, int minSize, int maxSiz
     }
 }
 
+// Prints out a vector<Color>'s data in a formatted way using setw()
 void outputVecData(vector<Color> &savedColors)
 {
-    int firstSpacer = 16;
-    int secondSpacer = 15;
-    cout << "Color #" << setw(firstSpacer) << "RValue" << setw(firstSpacer) << "GValue" << setw(firstSpacer) << "BValue" << endl;
-    cout << "------ " << setw(firstSpacer) << "------" << setw(firstSpacer) << "------" << setw(firstSpacer) << "------" << endl;
+    int firstSpacer = 9;
+    int secondSpacer = 10;
+    cout << "\nColor #" << setw(firstSpacer) << "RValue" << setw(firstSpacer) << "GValue" << setw(firstSpacer) << "BValue" << endl;
+    cout << "-------" << setw(firstSpacer) << "------" << setw(firstSpacer) << "------" << setw(firstSpacer) << "------" << endl;
     for(int i = 0; i < savedColors.size(); i++)
     {
-        cout << i << " " << savedColors[i].r << " " << savedColors[i].g << " " << savedColors[i].b << endl;
+        cout << "   " << i << setw(secondSpacer) << savedColors[i].r << setw(secondSpacer) << savedColors[i].g << setw(secondSpacer) << savedColors[i].b << endl;
     }
 }
