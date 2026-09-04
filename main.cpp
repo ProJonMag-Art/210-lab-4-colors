@@ -12,31 +12,39 @@ using namespace std;
 struct Color
 {
     int r;
-    int b;
     int g;
-    Color(int r, int b, int g)
+    int b;
+
+    // Constructor Function
+    Color(int r, int g, int b)
     {
-        
+        checkIntSize(r);
+        checkIntSize(g);
+        checkIntSize(b);
+
         this->r = r;
-        this->b = b;
         this->g = g;
+        this->b = b;
     }
 
-    int checkIntSize(int &col)
+    // Checks if an inputted number is within the valid range for rgb format (0 - 255)
+    // If the number is less than 0, it turns that number into zero
+    // If the number is bigger than 255, it turns that number into 255
+    void checkIntSize(int &col)
     {
         if(col < 0)
         {
-            return 0;
-        } else
-        if(col > 255)
+            col = 0;
+        } else if(col > 255)
         {
-            return 255;
+            col = 255;
         }
     }
 };
 
 int main()
 {
-
+    Color purple = Color(256, -1, 255);
+    cout << purple.r << " " << purple.g << " " << purple.b << endl;
     return 0;
 }
