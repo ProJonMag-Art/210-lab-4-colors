@@ -4,6 +4,7 @@
 // Completed on Spetember 3, 2026 at
 
 #include <iostream>
+#include <iomanip>
 #include <random>
 #include <ctime>
 #include <vector>
@@ -55,6 +56,9 @@ int getRandNum(int min, int max);
 // Populates a vector<Color> int amount of objects, with 3 random numbers between int minSize and int maxSize
 void populateVec(vector<Color>& savedColors, int amount, int minSize, int maxSize);
 
+// Prints out a vector<Color>'s data in a formatted way
+void outputVecData(vector<Color>& savedColors);
+
 int main()
 {
     // Seed rng
@@ -62,10 +66,7 @@ int main()
     int colAmount = getRandNum(MinVecCount, MaxVecCount);
 
     populateVec(savedColors, colAmount, MinColSize, MaxColSize);
-    for(int i = 0; i < colAmount; i++)
-    {
-        cout << i << " " << savedColors[i].r << " " << savedColors[i].g << " " << savedColors[i].b << endl;
-    }
+    outputVecData(savedColors);
     return 0;
 }
 
@@ -82,5 +83,17 @@ void populateVec(vector<Color>& savedColors, int amount, int minSize, int maxSiz
     {
         Color tempCol = Color(getRandNum(minSize, maxSize), getRandNum(minSize, maxSize), getRandNum(minSize, maxSize));
         savedColors.push_back(tempCol);
+    }
+}
+
+void outputVecData(vector<Color> &savedColors)
+{
+    int firstSpacer = 16;
+    int secondSpacer = 15;
+    cout << "Color #" << setw(firstSpacer) << "RValue" << setw(firstSpacer) << "GValue" << setw(firstSpacer) << "BValue" << endl;
+    cout << "------ " << setw(firstSpacer) << "------" << setw(firstSpacer) << "------" << setw(firstSpacer) << "------" << endl;
+    for(int i = 0; i < savedColors.size(); i++)
+    {
+        cout << i << " " << savedColors[i].r << " " << savedColors[i].g << " " << savedColors[i].b << endl;
     }
 }
